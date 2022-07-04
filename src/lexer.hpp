@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <string>
@@ -69,13 +68,13 @@ class Lexer {
 private:
     int ind = -1;
     string to_lex;
-    char current_char;  
+    char current_char; 
+    uint32_t tok_start_x = 0;
+    uint32_t tok_start_y = 0;
 
 
 public:
-    Lexer(){
-
-    }
+    Lexer();
     bool next_char();
     vector<Token> lex();
     vector<Token> lex_text(string given);
