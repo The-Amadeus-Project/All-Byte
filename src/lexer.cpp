@@ -6,6 +6,11 @@
 using namespace std;
 
 
+void error(string error_name, string error_body){
+    cout << error_name << ": " << error_body << "\n";
+    throw;
+}
+
 Token::Token(TokenType a_type, string a_value, uint32_t a_x, uint32_t a_y) {
     type = a_type;
     value = a_value;
@@ -69,14 +74,33 @@ vector<Token> Lexer::lex(){
 
         if (current_char == '"'){
             if (str_on){
-
-            } else {
                 
+            } else {
+                str_on = true;
+                if (unknown_length_being_used){
+
+                }
             }
         } else if (str_on) {
             
         } else {
-            assert((false) && "unimplemented");
+            if (id_on) {
+               error("UNIMPLEMTED", "IDENTIFIER");
+            } else {
+                switch (current_char) {
+                    case ' ':
+                        break;
+                    case '\n':
+                        break;
+                    case '\t':
+                        break;
+                    default:
+                        error("UNIMPLEMTED", "CASE CHARS");
+                        throw;
+                        break;
+                }
+            }
+        
         }
     }
 
