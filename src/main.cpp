@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
     Lexer lexer;
-    lexer.lex_text(" \"string\" ");
+    lexer.lex_text(" \"stdring\" \"st\" ");
 
     return 0;
 }
