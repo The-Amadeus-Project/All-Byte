@@ -1,2 +1,2 @@
-# CSL
-C port of sl
+# Amethyst
+universal byte code for the whole amadeus project
