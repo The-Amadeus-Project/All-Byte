@@ -38,7 +38,7 @@ string Token::true_value(){
     } else {
         return value;
     }
-}
+}       
 
 
 Lexer::Lexer(){
@@ -74,15 +74,22 @@ vector<Token> Lexer::lex(){
 
         if (current_char == '"'){
             if (str_on){
-                
+                str_on = false;
+                cout << unknown_length << "\n";
+                unknown_length = "";
+                unknown_length_being_used = false;
             } else {
                 str_on = true;
                 if (unknown_length_being_used){
-
+                    error("some shit happened", "unknown is being used");
                 }
             }
         } else if (str_on) {
-            
+            if (current_char == '\n'){
+                
+            } else {
+                unknown_length += current_char;
+            }
         } else {
             if (id_on) {
                error("UNIMPLEMTED", "IDENTIFIER");
@@ -96,7 +103,6 @@ vector<Token> Lexer::lex(){
                         break;
                     default:
                         error("UNIMPLEMTED", "CASE CHARS");
-                        throw;
                         break;
                 }
             }
